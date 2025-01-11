@@ -1,0 +1,41 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace:delegated  # Änderung von cached zu delegated
+    ports:
+      - "8000:8000"
+      - "5173:5173"
+    environment:
+      - COMPOSER_MEMORY_LIMIT=-1
+      - VITE_APP_URL=http://localhost:8000
+      - APP_URL=http://localhost:8000
+      - VITE_HOST=0.0.0.0
+      - VITE_PORT=5173
+    depends_on:
+      - mariadb
+      - redis
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: helpdesk
+      MYSQL_USER: helpdesk
+      MYSQL_PASSWORD: helpdesk
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  mysql_data:

@@ -1,0 +1,32 @@
+{
+    "name": "Laravel Helpdesk",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bmewburn.vscode-intelephense-client",
+                "Vue.volar",
+                "bradlc.vscode-tailwindcss",
+                "calebporzio.better-phpunit",
+                "amiralizadeh9480.laravel-extra-intellisense",
+                "christian-kohler.path-intellisense",
+                "esbenp.prettier-vscode",
+                "dbaeumer.vscode-eslint",
+                "onecentlin.laravel-extension-pack",
+                "xdebug.php-debug"
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "php.validate.enable": true,
+                "typescript.tsdk": "node_modules/typescript/lib"
+            }
+        }
+    },
+    "forwardPorts": [8000, 5173],
+    "postCreateCommand": "composer install && npm install && php artisan key:generate && php artisan migrate",
+    // Zusätzliche Konfiguration für bessere WSL-Kompatibilität
+    "remoteUser": "dev",
+    "updateRemoteUserUID": true
+}
