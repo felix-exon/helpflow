@@ -8,6 +8,7 @@
             "extensions": [
                 "bmewburn.vscode-intelephense-client",
                 "Vue.volar",
+                "laravel.vscode-laravel",
                 "bradlc.vscode-tailwindcss",
                 "calebporzio.better-phpunit",
                 "amiralizadeh9480.laravel-extra-intellisense",
