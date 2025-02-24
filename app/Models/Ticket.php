@@ -18,6 +18,7 @@ class Ticket extends Model
         'status',
         'priority',
         'category',
+        'team_id',
         'due_date',
         'creator_id',
         'assigned_to_id',
@@ -74,6 +75,11 @@ class Ticket extends Model
     public function emails(): HasMany
     {
         return $this->hasMany(Email::class);
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(TicketComment::class);
     }
 
     public function close(): void

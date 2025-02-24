@@ -42,13 +42,6 @@ export default defineConfig(( { command }) => {
         config.build = {
             // Chunks in kleinere Dateien aufteilen
             chunkSizeWarningLimit: 1000,
-            rollupOptions: {
-                output: {
-                    manualChunks: {
-                        vendor: ['vue', '@inertiajs/vue3'],
-                    },
-                },
-            },
             // Source Maps in Produktion deaktivieren
             sourcemap: false,
         };

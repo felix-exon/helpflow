@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TicketController;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -21,4 +22,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::resource('tickets', TicketController::class);
+    Route::post('tickets/{id}/comment', [TicketController::class, 'comment'])->name('tickets.comment');
 });
